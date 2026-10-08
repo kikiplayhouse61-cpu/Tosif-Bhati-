@@ -1,7 +1,3 @@
-Telegram Bot - Spotify Offer Link Generator
-With real-time logging
-"""
-
 import os
 import sys
 import time
