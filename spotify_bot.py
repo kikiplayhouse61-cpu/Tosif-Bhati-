@@ -82,14 +82,14 @@ def generate_one_link():
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         
-        chromedriver_path = shutil.which("chromedriver")
-86 if not chromedriver_path:
-87     raise RuntimeError("chromedriver not found in PATH")
-88
-89 d = webdriver.Chrome(
-90     service=Service(chromedriver_path),
-91     options=options
-92 )
+                chromedriver_path = shutil.which("chromedriver")
+        if not chromedriver_path:
+            raise RuntimeError("chromedriver not found in PATH")
+
+        d = webdriver.Chrome(
+            service=Service(chromedriver_path),
+            options=options
+        )
         time.sleep(5)
         email = None
         for sel in ['#email', '.email-address', 'input#email']:
