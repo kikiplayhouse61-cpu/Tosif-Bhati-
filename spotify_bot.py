@@ -10,7 +10,7 @@ import logging
 from datetime import datetime
 import asyncio
 from threading import Thread
-
+import shutil
 # Telegram
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
@@ -82,13 +82,14 @@ def generate_one_link():
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         
-        d = webdriver.Chrome(service=Service('/usr/local/bin/chromedriver'), options=options)
-        d.set_page_load_timeout(60)
-        d.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        
-        # Get temp email
-        logger.info("  → Getting temp email...")
-        d.get('https://temp-mail.io/en/')
+        chromedriver_path = shutil.which("chromedriver")
+86 if not chromedriver_path:
+87     raise RuntimeError("chromedriver not found in PATH")
+88
+89 d = webdriver.Chrome(
+90     service=Service(chromedriver_path),
+91     options=options
+92 )
         time.sleep(5)
         email = None
         for sel in ['#email', '.email-address', 'input#email']:
