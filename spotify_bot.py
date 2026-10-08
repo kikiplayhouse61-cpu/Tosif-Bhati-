@@ -1,6 +1,3 @@
-cd /root/bot/ && cat > spotify_bot.py << 'EOF'
-#!/usr/bin/env python3
-"""
 Telegram Bot - Spotify Offer Link Generator
 With real-time logging
 """
@@ -45,7 +42,7 @@ logger = logging.getLogger(__name__)
 # CONFIGURATION
 # ============================================================
 
-BOT_TOKEN = "8854769379:AAEtsdbhpOkTyxEe81oLLsXstPf75h5dHcE"
+BOT_TOKEN = "8868884997:AAHOlUaGNTIMCvo7aFE3ZewQbAYF3f4GM-A"
 
 PROXY_HOST = "gw.dataimpulse.com"
 PROXY_PORT = "823"
@@ -342,7 +339,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logger.info("🛑 Bot stopped.")
         sys.exit(0)
-EOF
-
-# Run the bot
-cd /root/bot/ && python3 spotify_bot.py
